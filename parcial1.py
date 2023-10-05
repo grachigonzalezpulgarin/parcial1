@@ -107,15 +107,15 @@ class ListOperations: #class se le llama a los submenus
         avg = statistics.mean(self.data)
         print(f"El promedio de la lista es: {avg}")
 
-    def calculate_median(self):
+    def calculate_median(self): #agregarmos funcion para la libreria
         median = statistics.median(self.data)
         print(f"La mediana de la lista es: {median}")
 
-    def calculate_variance(self):
+    def calculate_variance(self): #agregamos la funcion varianza
         variance = statistics.variance(self.data)
         print(f"La varianza de la lista es: {variance}")
 
-    def find_min_max(self):
+    def find_min_max(self): #para encontrar maximo y minimo de la lista
         if not self.data:
             print("La lista está vacía.")
             return
@@ -124,11 +124,11 @@ class ListOperations: #class se le llama a los submenus
         print(f"El valor mínimo de la lista es: {min_val}")
         print(f"El valor máximo de la lista es: {max_val}")
 
-    def show_length(self):
+    def show_length(self): # muestra la longitud de la lista
         length = len(self.data)
         print(f"La longitud de la lista es: {length}")
 
-    def compare_with_other_list(self, other_list):
+    def compare_with_other_list(self, other_list): #comparar con otras listas
         if self.data == other_list:
             print("Las listas son iguales.")
         else:
