@@ -5,6 +5,7 @@ ___________     Parcial 1    ___________________
  """
 #importamos statistics Este módulo proporciona funciones para calcular estadísticas matemáticas de datos numéricos
 #importamos random numeros aleatorios
+#primer parametro para el metodo instacia self
 import random
 import statistics
 
@@ -24,17 +25,17 @@ class ListOperations: #class se le llama a los submenus
         except ValueError as e: #saca una advertencia de un error
             print(f"Error al ingresar la lista: {e}")
 
-    def list_previamente(self):
+    def list_previamente(self):#lista predeterminada
         self.data = [5, 2, 9, 1, 7, 8, 3, 6, 4, 10]
         print("Lista previamente cargada.")
 
-    def crea_list_range(self):
+    def crea_list_range(self):#cria lista de rangos
         try:
-            start = int(input("Ingrese el valor inicial del rango: "))
-            end = int(input("Ingrese el valor final del rango: "))
-            self.data = list(range(start, end + 1))
+            start = int(input("Ingrese el valor inicial del rango: "))#numero incial
+            end = int(input("Ingrese el valor final del rango: "))#numero final
+            self.data = list(range(start, end + 1))#crea una lista con un rango con los numeros introducidos y el final se le suma 1 ya que el ultimo no se cuenta
             print("Lista creada desde rango.")
-        except ValueError as e:
+        except ValueError as e: #arroja un error
             print(f"Error al crear la lista desde el rango: {e}")
 
     def print_list(self):
@@ -42,7 +43,7 @@ class ListOperations: #class se le llama a los submenus
 
     def bubble_sort(self):#cuando es con burbuja lo ordena de menor a mayor 
         try:
-            n = len(self.data)
+            n = len(self.data) #longitud de los datos almacenados
             for i in range(n - 1):
                 for j in range(0, n - i - 1):
                     if self.data[j] > self.data[j + 1]:
