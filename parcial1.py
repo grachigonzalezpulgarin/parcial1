@@ -42,30 +42,30 @@ class ListOperations: #class se le llama a los submenus
         print("Lista actual:", self.data)#se almacena los datos y se reemplaza 
 
     def bubble_sort(self):#cuando es con burbuja lo ordena de menor a mayor 
-        try:
-            n = len(self.data) #longitud de los datos almacenados
-            for i in range(n - 1):
-                for j in range(0, n - i - 1):
-                    if self.data[j] > self.data[j + 1]:
-                        self.data[j], self.data[j + 1] = self.data[j + 1], self.data[j]
+        try:#itera sobre la lista, comparando elementos adyacentes y realizando intercambios si es necesario para asegurarse de que la lista esté ordenada de menor a mayor al final del proceso
+            n = len(self.data)# calcule la longitud de los datos almacenados en el atributo self.datay la almacena en la variable n.
+            for i in range(n - 1):#Controle la cantidad de pasos necesarios para asegurarse de que todos los elementos estén en su posición final
+                for j in range(0, n - i - 1):#Este compara cada elemento con su siguiente y realiza un intercambio si el elemento actual es mayor que el siguiente.
+                    if self.data[j] > self.data[j + 1]:#se compara con el sigueinte
+                        self.data[j], self.data[j + 1] = self.data[j + 1], self.data[j]#Si el elemento actual es mayor que el siguiente
             print("Lista ordenada con burbuja:", self.data)
         except Exception as e:
             print(f"Error al ordenar con burbuja: {e}")
 
-    def quick_sort(self):
+    def quick_sort(self):#busqueda rapida
         try:
             self.data = self._quick_sort(self.data)
             print("Lista ordenada con rápido:", self.data)
         except Exception as e:
             print(f"Error al ordenar con rápido: {e}")
 
-    def _quick_sort(self, arr):#almacena varios elementos rapidos 
-        if len(arr) <= 1:
+    def _quick_sort(self, arr):#almacena varios elementos rapidos y que se va a ordenar
+        if len(arr) <= 1: #si la longitud de la lista es menor o igual a 1 significa que la lista ya está ordenada.
             return arr
         else:
-            pivot = arr[0]
-            less = [x for x in arr[1:] if x <= pivot]
-            greater = [x for x in arr[1:] if x > pivot]
+            pivot = arr[0] #selecciona el pivote de la lista
+            less = [x for x in arr[1:] if x <= pivot] #elementos menores
+            greater = [x for x in arr[1:] if x > pivot] #mayores
             return self._quick_sort(less) + [pivot] + self._quick_sort(greater)
 
     def compare_sorted(self):#compara la lista creada con la que se acaba de crear
@@ -82,19 +82,19 @@ class ListOperations: #class se le llama a los submenus
                 return
         print(f"{target} no encontrado en la lista.")
 
-    def binary_search(self, target):
+    def binary_search(self, target): #busca en binario el objeto en la variable self
         try:
             self.data.sort() #ordena en orden ascendente
-            low, high = 0, len(self.data) - 1
+            low, high = 0, len(self.data) - 1 #izq y der de la sublista actual
             while low <= high:
-                mid = (low + high) // 2
-                if self.data[mid] == target:
-                    print(f"{target} encontrado en la posición {mid}.")
+                mid = (low + high) // 2 #calcula el indice medio
+                if self.data[mid] == target: #compara la posicion del objeto
+                    print(f"{target} encontrado en la posición {mid}.") #si se encuentra se imprime
                     return
                 elif self.data[mid] < target:
-                    low = mid + 1
+                    low = mid + 1 # Si el elemento en la posición menor que el objetivo, se actualiza low para buscar en la mitad derecha
                 else:
-                    high = mid - 1
+                    high = mid - 1 # Si es mayor, se actualiza high para buscar en la mitad izquierda.
             print(f"{target} no encontrado en la lista.")
         except Exception as e:
             print(f"Error al realizar la búsqueda binaria: {e}")
